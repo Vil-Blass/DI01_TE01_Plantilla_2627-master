@@ -1,20 +1,30 @@
 <!-- ver restaurante seleccionado en detalle al hacer click -->
 
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
+    <ion-toolbar style="display: flex; justify-content: space-between; align-items: center;">
+        <ion-buttons slot="start" style="width: 20%; background-color: #f35c5c; border-radius: 5px;">
             <ion-back-button defaultHref="/home"></ion-back-button>
         </ion-buttons>
-        
+
         <!-- titulo del restaurante seleccionado -->
         <ion-title>{{ restaurante()?.documentName }}</ion-title>
+
+        <!-- <ion-item slot="end">
+            @for (dev in desarrollador) {
+            <ion-label>{{ dev }}</ion-label>
+            }
+        </ion-item>
+       -->
     </ion-toolbar>
+    <!-- datos del desarrollador en el footer con  -->
+    
+        
+    
 </ion-header>
 
 <ion-content>
     @if (restaurante()) {
-        
-    
+
     <ion-list>
         <ion-item>
             <ion-label>Nombre</ion-label>
@@ -42,16 +52,19 @@
         </ion-item>
         <ion-item>
             <ion-label>Estrellas Michelin</ion-label>
-            <ion-label>{{ restaurante()?.estrellasMichelin }}</ion-label>
+            <ion-label>{{ restaurante()?.michelinStar }}</ion-label>
         </ion-item>
         <ion-item>
             <ion-label>Soles Repsol</ion-label>
-            <ion-label>{{ restaurante()?.solesRepsol }}</ion-label>
+            <ion-label>{{ restaurante()?.repsolSun }}</ion-label>
         </ion-item>
     </ion-list>
     }@else{
-        <ion-item>
-            <ion-label>No hay restaurante seleccionado</ion-label>
-        </ion-item>
+    <ion-item>
+        <ion-label>No hay restaurante seleccionado</ion-label>
+    </ion-item>
+
+
     }
+
 </ion-content>

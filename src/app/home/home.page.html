@@ -2,6 +2,7 @@
   <ion-toolbar style="display: flex; flex-flow: row; align-items: center; justify-content: space-evenly; 
   background-color: #ddd;">
     <ion-title style="width: fit-content; text-align: center;  font-weight: medium;">Guía de Restaurantes Euskadi</ion-title>
+    
     <ion-buttons slot="end"  style="background-color: blue; color: yellow; font-weight: bold; 
     width: fit-content; ; justify-content: center; cursor: pointer;
     text-transform: uppercase; border-radius: 5px;" type="submit" (click)="cargarDatos()" (keydown.enter)="cargarDatos()" tabindex="0">
@@ -196,14 +197,7 @@
 
 
   <!-- este apartado ha sido agregado por mi Cuenta -->
-   <!-- activar depues de cargar los restaurantes -->
-    @if (hayDatos()) {
-    <ion-item color="primary">
-      <ion-label>
-        Pulsa sobre un restaurante para ver sus detalles
-      </ion-label>
-    </ion-item>
-
+   
     @for (rs of restaurantesFiltrados(); track rs.documentName) {
       <ion-item
         button="true"
@@ -220,8 +214,9 @@
           <p>Soles Repsol: {{ repsolSoles(rs) > 0 ? repsolSoles(rs) : '-' }}</p>
         </ion-label>
       </ion-item>
+
     }
-  }
+  
 
 
 </ion-content>

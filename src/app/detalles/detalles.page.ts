@@ -1,5 +1,5 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
-import { IonicModule, ToastController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import restaurantesJSON from '../../assets/datos/restaurantes.json';
 import { Restaurante } from '../interface/restaurante';
@@ -12,7 +12,6 @@ import { Restaurante } from '../interface/restaurante';
     imports: [IonicModule],
 })
 export class DetallesPage implements OnInit {
-    private readonly toastController = inject(ToastController);
     private readonly route = inject(ActivatedRoute);
     private readonly restaurantes: Restaurante[] =
         restaurantesJSON as Restaurante[];
@@ -27,18 +26,25 @@ export class DetallesPage implements OnInit {
     public readonly mostrarDetalles = signal<Restaurante | null>(null);
 
     ngOnInit(): void {
-        const id = this.route.snapshot.paramMap.get('id');
+        const documentName =
+            this.route.snapshot.paramMap.get('documentName');
 
-        if (id) {
+        if (documentName) {
             const restaurante = this.restaurantes.find(
-                restaurante =>
-                    restaurante['id'] === Number.parseInt(id, 10)
+                restaurante => restaurante.documentName === documentName
             );
 
             if (restaurante) {
-                this.mostrarDetalles.set(restaurante);
                 this.restauranteSeleccionado.set(restaurante);
             }
         }
     }
+
+
+      // ############################### DATOS DEL DESARROLLADOR ###############################
+
+  desarrollador = {
+    nombre: 'Jeffry Jaquez Santana',
+    Github: 'https://github.Vil-Blass'
+  };
 }

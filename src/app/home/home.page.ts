@@ -213,4 +213,8 @@ export class HomePage {
     const valor = Number(restaurante.repsolSun ?? 0);
     return Number.isFinite(valor) ? valor : 0;
   }
+
+
+
+
 }
