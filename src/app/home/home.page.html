@@ -196,24 +196,44 @@
 
 
   <!-- este apartado ha sido agregado por mi Cuenta -->
-@for(rs of restaurantesFiltrados(); track rs.documentName) {
-  <ion-item
-    button="true"
-    (click)="mostrarRestaurante(rs)"
-    (keydown.enter)="mostrarRestaurante(rs)">
-    <ion-label>
-      <h2>Nombre: {{ rs.documentName }}</h2>
-      <p>Localidad: {{ rs.locality }}</p>
-      <p>Dirección: {{ rs.address }}</p>
-      <p>Teléfono: {{ rs.phone }}</p>
-      <p>Territorio: {{ rs.territory }}</p>
-      <p>Web: {{ rs.web }}</p>
-      <p>Estrellas Michelin: {{ estrellasMichelin(rs) > 0 ? estrellasMichelin(rs) : '-' }}</p>
-      <p>Soles Repsol: {{ repsolSoles(rs) > 0 ? repsolSoles(rs) : '-' }}</p>
-    </ion-label>
-  </ion-item>
-}
+   <!-- activar depues de cargar los restaurantes -->
+    @if (hayDatos()) {
+    <ion-item color="primary">
+      <ion-label>
+        Pulsa sobre un restaurante para ver sus detalles
+      </ion-label>
+    </ion-item>
 
+    @for (rs of restaurantesFiltrados(); track rs.documentName) {
+      <ion-item
+        button="true"
+        (click)="mostrarRestaurante(rs)"
+        (keydown.enter)="mostrarRestaurante(rs)">
+        <ion-label>
+          <h2>Nombre: {{ rs.documentName }}</h2>
+          <p>Localidad: {{ rs.locality }}</p>
+          <p>Dirección: {{ rs.address }}</p>
+          <p>Teléfono: {{ rs.phone }}</p>
+          <p>Territorio: {{ rs.territory }}</p>
+          <p>Web: {{ rs.web }}</p>
+          <p>Estrellas Michelin: {{ estrellasMichelin(rs) > 0 ? estrellasMichelin(rs) : '-' }}</p>
+          <p>Soles Repsol: {{ repsolSoles(rs) > 0 ? repsolSoles(rs) : '-' }}</p>
+        </ion-label>
+      </ion-item>
+    }
+  }
 
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar style="display: flex; flex-flow: row; align-items: center; justify-content: space-evenly; 
+  background-color: #ddd;">
+    <ion-title style="width: fit-content; text-align: center;  font-weight: medium;">Guía de Restaurantes Euskadi</ion-title>
+  </ion-toolbar>
+  <!-- datos del desarrollador en el footer con  -->
+  <ion-toolbar style="display: flex; flex-flow: row; align-items: center; justify-content: space-evenly; 
+  background-color: #ddd;">
+    <ion-title style="width: fit-content; text-align: center;  font-weight: medium;">Desarrollado por: Jeffry Jaquez Santana</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -5,13 +5,13 @@ import restaurantesJSON from '../../assets/datos/restaurantes.json';
 import { Restaurante } from '../interface/restaurante';
 
 @Component({
-    selector: 'app-detalle',
-    templateUrl: './detalle.page.html',
-    styleUrls: ['./detalle.page.scss'],
+    selector: 'app-detalles',
+    templateUrl: './detalles.page.html',
+    styleUrls: ['./detalles.page.scss'],
     standalone: true,
     imports: [IonicModule],
 })
-export class DetallePage implements OnInit {
+export class DetallesPage implements OnInit {
     private readonly toastController = inject(ToastController);
     private readonly route = inject(ActivatedRoute);
     private readonly restaurantes: Restaurante[] =
